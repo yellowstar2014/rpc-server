@@ -11,7 +11,7 @@ import java.net.Socket;
 
 /**
  * @author yellow
- * @date 2019/9/12 15:26
+ * @date 2019/9/22
  * 温馨提醒:
  * 代码千万行，
  * 注释第一行。
@@ -36,12 +36,14 @@ public class ProcessorHandler implements Runnable{
             inputStream = new ObjectInputStream(socket.getInputStream());
             //inputStream里面存在的信息有：请求的目标类、请求方法名称、请求方法参数、请求的参数类型
             RpcRequest request = (RpcRequest) inputStream.readObject();
+            System.out.println( "服务端收到了请求连接，需调用的服务接口信息是:" +request.toString());
             Object result = invoke(request);//调用方法，获得结果
 
             //把方法调用的结果输出给client
             outputStream = new ObjectOutputStream(socket.getOutputStream());
             outputStream.writeObject(result);//序列化，写入到通信管道里
             outputStream.flush();
+            System.out.println( "服务端调用服务接口后返回的信息是:" +result.toString());
 
         }catch (Exception ex){
             ex.printStackTrace();

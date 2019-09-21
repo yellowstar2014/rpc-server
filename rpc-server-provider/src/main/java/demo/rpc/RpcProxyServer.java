@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 /**
  * @author yellow
- * @date 2019/9/12 14:42
+ * @date 2019/9/22
  * 温馨提醒:
  * 代码千万行，
  * 注释第一行。
@@ -30,6 +30,7 @@ public class RpcProxyServer {
         ServerSocket serverSocket = null;
         try{
             serverSocket = new ServerSocket(port);//启动一个服务
+            System.out.println( "服务端已启动，坐等需要调用服务接口的远程请求连接:" );
             while (true){
                 final Socket socket = serverSocket.accept();//获得一个远程链接
                 executorService.execute(new ProcessorHandler(service,socket));
