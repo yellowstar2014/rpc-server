@@ -13,6 +13,6 @@ public class DemoServiceImpl implements IDemoService {
 
     @Override
     public String welcomeFun(String name) {
-        return "hello,welcome "+name+", RPC project is ok!";
+        return "hello,welcome "+name+", RPC framework is ok!";
     }
 }

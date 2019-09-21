@@ -30,7 +30,7 @@ public class RpcProxyServer {
         ServerSocket serverSocket = null;
         try{
             serverSocket = new ServerSocket(port);//启动一个服务
-            System.out.println( "服务端已启动，坐等需要调用服务接口的远程请求连接:" );
+            System.out.println( "server端已启动，坐等需要调用服务的远程请求链接:" );
             while (true){
                 final Socket socket = serverSocket.accept();//获得一个远程链接
                 executorService.execute(new ProcessorHandler(service,socket));

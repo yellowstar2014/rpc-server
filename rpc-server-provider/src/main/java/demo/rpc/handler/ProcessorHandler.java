@@ -36,14 +36,14 @@ public class ProcessorHandler implements Runnable{
             inputStream = new ObjectInputStream(socket.getInputStream());
             //inputStream里面存在的信息有：请求的目标类、请求方法名称、请求方法参数、请求的参数类型
             RpcRequest request = (RpcRequest) inputStream.readObject();
-            System.out.println( "服务端收到了请求连接，需调用的服务接口信息是:" +request.toString());
+            System.out.println( "server端收到了请求链接，需调用的服务:" +request.toString());
             Object result = invoke(request);//调用方法，获得结果
 
             //把方法调用的结果输出给client
             outputStream = new ObjectOutputStream(socket.getOutputStream());
             outputStream.writeObject(result);//序列化，写入到通信管道里
             outputStream.flush();
-            System.out.println( "服务端调用服务接口后返回的信息是:" +result.toString());
+            System.out.println( "server端服务执行后返回的信息:" +result.toString());
 
         }catch (Exception ex){
             ex.printStackTrace();
