@@ -1,4 +1,4 @@
-package demo.rpc;
+package demo.rpc.rpcServer;
 
 import demo.rpc.handler.ProcessorHandler;
 
